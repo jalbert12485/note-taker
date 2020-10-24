@@ -23,6 +23,7 @@ app.get("/*", function(req, res) {
 app.post("/api/notes", function(req,res){
     
     let { title, text}=req.body;
+    console.log(req.body);
     
     fs.readFile("./server/db/db.json", "utf8", function(err,data){
         if (err) {throw err;}else{
