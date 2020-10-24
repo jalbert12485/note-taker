@@ -9,7 +9,7 @@ var PORT = process.env.PORT || 3000;
 // ===========================================================
 
 app.get("/api/notes", function(req, res) {
-    res.sendFile(path.join(__dirname, "/db/db.json"));
+    res.sendFile(path.join(__dirname, "/server/db/db.json"));
 });
 
 app.get("/notes", function(req, res) {
