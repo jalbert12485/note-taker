@@ -44,23 +44,29 @@ app.post("/api/notes", function(req,res){
  
 });
 
-// app.delete("/api/notes/:id", function(){
-//     let notes=JSON.parse(fs.readFile("./server/db/db.json", "utf8", function(err){
-//         if (err) throw err;
-//     }));
-//     var id = req.params.id;
+app.delete("/api/notes/:id", function(){
+    let id=req.params.id;
+    JSON.parse(fs.readFile("./server/db/db.json", "utf8", function(err,data){
+        if (err){ throw err;}else{
+            let notes=JSON.parse(data);
+            for(let i=0; i< notes.length; i++){
+                if(notes[i].id == id){
+                    notes.splice(i,1);
+                }
+            }
+            fs.writeFile("./server/db/db.json", JSON.stringify(notes), function(err){
+                if (err) throw err;
+            } );
+            res.send(`Note deleted.`);
 
-//     for(let i=0; i< notes.length; i++){
-//         if(notes[i].id == id){
-//             notes.splice(i,1);
-//         }
-//     }
-//     fs.writeFile("./server/db/db.json", JSON.stringify(notes), function(err){
-//         if (err) throw err;
-//     } );
-//     res.send(`Note deleted.`);
 
-// });
+        }
+    }));
+ 
+
+
+
+});
 
 
 
