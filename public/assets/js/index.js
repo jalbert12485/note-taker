@@ -4,14 +4,7 @@ const $saveNoteBtn = $(".save-note");
 const $newNoteBtn = $(".new-note");
 const $noteList = $(".list-container .list-group");
 
-function postStuff(){
-$.post("/api/notes",{ "title": "titleInput",
-"text":"textInput"},function(){
-  $("#title").text(JSON.stringify(res));
 
-})}
-
-$(window).on("click",postStuff);
 
 
 
