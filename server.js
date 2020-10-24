@@ -22,13 +22,13 @@ app.get("/*", function(req, res) {
 
 app.post("/api/notes", function(req,res){
     
-
+    let { title, text}=req.body;
     
     fs.readFile("./server/db/db.json", "utf8", function(err,data){
         if (err) {throw err;}else{
             let notes=JSON.parse(data);
-            notes.push({"title": "title",
-                        "text": "text",
+            notes.push({"title": title,
+                        "text": text,
                         "id": notes.length
                     });
           
@@ -41,14 +41,6 @@ app.post("/api/notes", function(req,res){
             res.send(notes);
         } 
     });
-    //  let note=req.body; 
-   
-    
-
-    // notes.push(note);
-    // fs.writeFile("./server/db/db.json", JSON.stringify(notes), function(err){
-    //     if (err) throw err;
-    // } );
  
 });
 
